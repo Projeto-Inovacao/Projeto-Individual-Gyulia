@@ -18,8 +18,6 @@ O backend desta aplicação é implementado usando Python pela a biblioteca psut
 Enviam dados tanto para o banco MySQL local como forma de contenção quanto para o SQL Server para os dados serem apresentados ao usuário através do IP Elátisco feito através da AWS.
 
 ### Apresentação para o usuário:
-<div center>
 ![Alt Text](imagens/dash-gyu-1.png)
 ![Alt Text](imagens/dash-gyu-2.png)
 ![Alt Text](imagens/dash-gyu-3.png)
-</div>
