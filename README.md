@@ -15,6 +15,9 @@ Tabelas dos Últimos 5 Registros em Alerta: Feitas com o objetivo de achar padr�
 O backend desta aplicação é implementado usando Python pela a biblioteca psutil para capturar dados de memória RAM e a data e hora da última inicialização do sistema operacional e Kotlin através da API Looca para capturar e processar os dados da temperatura da CPU, da própria CPU e das janelas abertas. 
 
 ### API´s:
-Enviam dados tanto para o banco MySQL local como forma de contenção quanto para o SQL Server para os dados serem apresentados ao cliente através do IP Elátisco feito através da AWS.
+Enviam dados tanto para o banco MySQL local como forma de contenção quanto para o SQL Server para os dados serem apresentados ao usuário através do IP Elátisco feito através da AWS.
 
-
+### Apresentação para o usuário:
+![Alt Text](imagens/dash-gyu-1.png)
+![Alt Text](imagens/dash-gyu-2.png)
+![Alt Text](imagens/dash-gyu-3.png)
