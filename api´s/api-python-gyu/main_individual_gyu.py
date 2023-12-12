@@ -30,7 +30,6 @@ while not event.is_set():
         memoria = psutil.virtual_memory()
         hostname = socket.gethostname()
 
-        # Verificar se a máquina com id_maquina 1 existe
         check_machine_query = "SELECT id_maquina FROM maquina WHERE id_maquina = 1;"
         check_machine_cursor = mydb.cursor()
         check_machine_cursor.execute(check_machine_query)
@@ -38,11 +37,9 @@ while not event.is_set():
 
 
         if machine_exists:
-            # Máquina com id_maquina 1 existe, obter o timestamp da última inicialização
             ultimo_boot_timestamp = psutil.boot_time()
             ultimo_boot_formatado = datetime.fromtimestamp(ultimo_boot_timestamp).strftime("%Y-%m-%d %H:%M:%S")
 
-            # Atualizar a tabela maquina com o novo timestamp
             update_machine_query = "UPDATE maquina SET data_hora_inicializacao = %s WHERE id_maquina = %s;"
             update_machine_cursor = mydb.cursor()
             update_machine_cursor.execute(update_machine_query, (ultimo_boot_formatado,1 ))
@@ -50,8 +47,6 @@ while not event.is_set():
 
             print("Data_hora_inicializacao atualizada na tabela maquina.")
             
-
-            # Restante do código para inserir os dados de monitoramento
             sql_query = "SELECT id_maquina, fk_empresaM FROM maquina WHERE hostname = %s;"
             mycursor = mydb.cursor()
             mycursor.execute(sql_query, (hostname,))
@@ -121,19 +116,13 @@ while not event.is_set():
                         (%s, %s, 'tempo corrido em horas', (SELECT id_componente from componente WHERE nome_componente = 'SISTEMA' and fk_maquina_componente = %s), %s, %s, (SELECT id_unidade FROM unidade_medida WHERE representacao = %s));
                     """
                     val = (
-                        # Primeiro conjunto de valores
                         memoria.available, data_hora_local, id_maquina, id_maquina, fk_empresaM, 'B',
-                        
-                        # Segundo conjunto de valores
                         memoria.total, data_hora_local, id_maquina, id_maquina, fk_empresaM, 'B',
-                        
-                        # Terceiro conjunto de valores
                          ( (datetime.now() - datetime.fromtimestamp(ultimo_boot_timestamp)).total_seconds() ) / 3600, data_hora_local, id_maquina, id_maquina, fk_empresaM, 'H')
                     
 
                     mycursor.execute(sql_query, val)
                     mydb.commit()
-
 
                     
                     print(mycursor.rowcount, "registros inseridos no banco")
@@ -151,4 +140,4 @@ while not event.is_set():
     except Exception as ex:
         print(f"Erro geral: {ex}")
 
-time.sleep(30)  # Adicionado aqui se você desejar um atraso antes da próxima iteração
+time.sleep(30) 
