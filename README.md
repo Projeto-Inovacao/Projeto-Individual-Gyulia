@@ -1,4 +1,4 @@
-### Dashboard Relação de Temperatura da CPU com Outros Componentes 
+### Dashboard da Relação de Temperatura da CPU com Outros Componentes 
 
 Esta aplicação oferece uma interface intuitiva e informativa para monitorar a temperatura da CPU do seu sistema em tempo real. Desenvolvi esta solução para fornecer uma maneira fácil e visualmente atraente de acompanhar as métricas térmicas essenciais do seu hardware.
 
